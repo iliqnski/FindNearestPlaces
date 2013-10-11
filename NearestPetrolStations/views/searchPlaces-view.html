@@ -1,0 +1,19 @@
+<div id="location" 
+     data-role="view"  
+     data-layout="main-layout"
+     data-title="Search Places" 
+     data-init="app.locationSearchService.initLocation" 
+   
+     data-model="app.locationSearchService.viewModel" 
+     data-stretch="true">
+
+    <div id="map-search-wrap">
+        <button id="map-navigate-home" data-bind="click: onNavigateHome"></button>
+        <form onsubmit="return false;">
+            <input id="map-place" type="search"/>
+            <input id="map-search" type="submit" value="" data-bind="click: onSearchPlace" />
+        </form>
+    </div>
+    <div id="search-map-canvas"></div>
+
+</div>
