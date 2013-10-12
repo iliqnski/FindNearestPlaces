@@ -1,11 +1,11 @@
 var app = app || {};
 
-(function (a) {
+(function(a) {
     var map;
     var location;
     var infowindow;
-    
-    var LocationViewModel = kendo.data.ObservableObject.extend({
+
+    var DetailSearchViewModel = kendo.data.ObservableObject.extend({
         onNavigateHome: function () {
             var mapOptions = {
                 zoom: 15,
@@ -14,14 +14,14 @@ var app = app || {};
                 zoomControlOptions: {
                     position: google.maps.ControlPosition.LEFT_BOTTOM
                 },
-    
+
                 mapTypeControl: false,
                 streetViewControl: false
             };
-        
-            var mapCanvas = document.getElementById("search-map-canvas");
+
+            var mapCanvas = document.getElementById("detailSearch-map-canvas");
             map = new google.maps.Map(mapCanvas, mapOptions);    
-        
+
             navigator.geolocation.getCurrentPosition(
                 function (position) {
                     location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -44,14 +44,20 @@ var app = app || {};
         },
 
         onSearchPlace: function () {
-            app.locationSearchService.initLocation();
-            var txtPlaceType = document.getElementById("map-place");
+            app.detailSearchService.initLocation();
+
+            var placeType = document.getElementById("place-type");
+            var selectedPlaceType = placeType.options[placeType.selectedIndex].value;
+            
+            var distance = document.getElementById("place-distance");
+            var selectedDistance = distance.options[distance.selectedIndex].value;
+            
             var request = {
                 location:location,
-                radius: 1000,
-                types:[txtPlaceType.value.toLowerCase()]
+                radius: selectedDistance,
+                types:[selectedPlaceType.toLowerCase()]
             };
-            
+
             infowindow = new google.maps.InfoWindow();
             var service = new google.maps.places.PlacesService(map);
             service.nearbySearch(request, GetResults);
@@ -74,17 +80,18 @@ var app = app || {};
                     map: map,
                     position: place.geometry.location,
                 });
-                
+
                 var placeIcon = '<img src="' + place.icon + '" /><font style="color:#000;">';
                 var placeName = place.name;
                 var placeVicinity = 'Vicinity: ' + place.vicinity;
                 var placeRating;
-                if(place.rating){
+                if (place.rating) {
                     placeRating = '<br />Rating: ' + place.rating + '<br />';
-                }else{
+                }
+                else {
                     placeRating = "<br/>";
                 }
-                
+
                 google.maps.event.addListener(marker, 'click', function () {
                     infowindow.setContent(placeIcon + placeName + placeRating + placeVicinity);
                     infowindow.open(map, this);
@@ -93,7 +100,7 @@ var app = app || {};
         },
     });
 
-    app.locationSearchService = {
+    app.detailSearchService = {
         initLocation: function () {
             var mapOptions = {
                 zoom: 15,
@@ -102,15 +109,15 @@ var app = app || {};
                 zoomControlOptions: {
                     position: google.maps.ControlPosition.LEFT_BOTTOM
                 },
-    
+
                 mapTypeControl: false,
                 streetViewControl: false
             };
 
-            map = new google.maps.Map(document.getElementById("search-map-canvas"), mapOptions);            
-            app.locationSearchService.viewModel.onNavigateHome.apply(app.locationSearchService.viewModel, []);
+            map = new google.maps.Map(document.getElementById("detailSearch-map-canvas"), mapOptions);            
+            app.detailSearchService.viewModel.onNavigateHome.apply(app.detailSearchService.viewModel, []);
         },
 
-        viewModel: new LocationViewModel()
+        viewModel: new DetailSearchViewModel()
     };
 }(app));

@@ -78,6 +78,7 @@ body, html
 
 #map-search-wrap
 {
+    text-align:center;
     position: absolute;
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.5);
