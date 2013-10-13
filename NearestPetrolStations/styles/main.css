@@ -6,18 +6,20 @@ body, html
 }
 
 /* COMMON STYLES*/
-
-span.k-input{
-    width:150px;
+span.k-input
+{
+    width: 150px;
 }
 
-#main-title{
-    background-color:#4682B4;
-    text-align:center;
+#main-title
+{
+    background-color: #4682B4;
+    text-align: center;
 }
 
-#main-title h3{
-    color:white;
+#main-title h3
+{
+    color: white;
 }
 .view-content h1
 {
@@ -84,7 +86,7 @@ span.k-input{
 
 #map-search-wrap
 {
-    text-align:center;
+    text-align: center;
     position: absolute;
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.5);
@@ -145,39 +147,6 @@ span.k-input{
 {
     background-image: url(../styles/images/location_active.png);
     background-repeat: no-repeat;
-}
-
-/* WEATHER STYLES*/
-.weather h1
-{
-    color: #fff;
-    font-size: 1.5em;
-    line-height: 1.2em;
-    text-shadow: none;
-    padding: 0.6em 1em;
-    margin: 0;
-    text-align: center;
-}
-.weather-info
-{
-    color: #fff;
-    font-size: 1.2em;
-    text-shadow: none;
-    line-height: 1.8em;
-    display: inline-block;
-}
-.weather-info.date
-{
-    margin-top: 7px;
-}
-.weather-info.temperature
-{
-    margin-left: 5px;
-}
-
-.weather-info.temperature.low
-{
-    color: rgba(0, 0, 0, 0.5);
 }
 
 /* DEVICE SPECIFIC STYLES*/
