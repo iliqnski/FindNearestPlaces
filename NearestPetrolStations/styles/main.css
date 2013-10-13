@@ -6,6 +6,11 @@ body, html
 }
 
 /* COMMON STYLES*/
+
+span.k-input{
+    width:150px;
+}
+
 #main-title{
     background-color:#4682B4;
     text-align:center;
@@ -67,7 +72,8 @@ body, html
 }
 
 /* MAP STYLES*/
-#map-canvas
+#map-canvas, #detailSearch-map-canvas,
+#search-map-canvas
 {
     position: absolute;
     top: 0;
@@ -172,41 +178,6 @@ body, html
 .weather-info.temperature.low
 {
     color: rgba(0, 0, 0, 0.5);
-}
-
-/* Weather Icons*/
-.weather-icon
-{
-    width: 64px;
-    height: 64px;
-    background-image: url(../styles/images/sprite-weather.png);
-    background-repeat: no-repeat;
-    float: right;
-    position: relative;
-    top: -6px;
-    left: -10px;
-}
-.weather-icon.sunny { background-position: 0px 0px; }
-.weather-icon.cloudy { background-position: 0px -64px; }
-.weather-icon.partly-cloudy { background-position: 0px -128px; }
-.weather-icon.partly-sunny { background-position: 0px -192px; }
-.weather-icon.shower { background-position: 0px -256px; }
-.weather-icon.foggy { background-position: 0px -320px; }
-.weather-icon.storm { background-position: 0px -384px; }
-
-.position-left
-{
-    float: left;
-}
-.position-right
-{
-    float: right;
-}
-.position.center
-{
-    position: absolute;
-    margin: 0 auto;
-    width: 100%;
 }
 
 /* DEVICE SPECIFIC STYLES*/
